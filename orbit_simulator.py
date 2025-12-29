@@ -1,43 +1,35 @@
-
-
-import turtle
+import turtle
 import math
 import time
-
-#Screen Setup
+
 screen = turtle.Screen()
 screen.bgcolor("black")
 screen.title("Simple Orbit Simulator")
-screen.tracer(0)   # smoother animation
-
-#Sun
+screen.tracer(0)   
+
 sun = turtle.Turtle()
 sun.shape("circle")
 sun.color("yellow")
 sun.shapesize(2)
 sun.penup()
 sun.goto(0, 0)
-
-# Planet
+
 planet = turtle.Turtle()
 planet.shape("circle")
 planet.color("cyan")
 planet.shapesize(0.7)
 planet.penup()
-
-
+
 info = turtle.Turtle()
 info.hideturtle()
 info.color("white")
 info.penup()
 info.goto(-300, 250)
-
-
+
 radius = 150      #distance from sun
 angle = 0         #starting angle
 speed = 0.05      #speed of orbit
-
-
+
 def update_info():
     info.clear()
     circumference = 2 * math.pi * radius
@@ -67,15 +59,13 @@ def decrease_speed():
     global speed
     if speed > 0.01:
         speed -= 0.01
-
-
+
 screen.listen()
 screen.onkey(increase_radius, "Up")
 screen.onkey(decrease_radius, "Down")
 screen.onkey(increase_speed, "Right")
 screen.onkey(decrease_speed, "Left")
-
-
+
 while True:
     x = radius * math.cos(angle)
     y = radius * math.sin(angle)
